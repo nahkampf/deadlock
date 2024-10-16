@@ -1,0 +1,20 @@
+{
+    "name": "nahkampf/deadlock",
+    "description": "A cyberpunk BBS door game written in PHP-CLI",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nahkampf\\Deadlock\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sebastian Utbult",
+            "email": "kreuzweg@gmail.com"
+        }
+    ],
+    "require": {
+        "nahkampf/ansi-php": "^3.2"
+    }
+}
