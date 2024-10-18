@@ -15,10 +15,18 @@ use Nahkampf\Deadlock\DropfileType;
 use Nahkampf\Deadlock\Ansifile;
 use Nahkampf\Deadlock\DB;
 use Nahkampf\Deadlock\User;
+use Nahkampf\Deadlock\Effects;
 
 $ansi = new Ansi(new StreamWriter('php://stdout'));
-$parser = new Parser($ansi);
-
+$parser = new Parser($ansi, Parser::MODE_ANSIBBS);
+Effects::whiteFlash();
+for ($f = 0; $f < 10; $f++) {
+    Ansifile::play('ad_1.ans');
+    usleep(50000);
+    Ansifile::play('ad_2.ans');
+    usleep(50000);    
+}
+Effects::deadScreen();
 $args = getopt(
     "",
     [
@@ -33,7 +41,7 @@ $ansi->eraseDisplay();
 if (empty($args)) {
     $parser->parse("%c%%r%%n%");
     $parser->parse("%f11%dead%f14%lock %f7%v%f15%" . VERSION . "%r%%lf%");
-    $parser->parse("Deadlock needs to be run with an option!%lf%%lf%");
+    $parser->parse("Deadlock needs to be run with arguments!%lf%%lf%");
     $parser->parse("%f15%--dropfile%r%\tPath to dropfile (e.g /sbbs/%lf");
     $parser->parse("%f15%--type%r%\t\tType of dropfile (door32 or doorsys)%lf%");
     $parser->parse("%lf%It is also possible to skip the dropfile and use these options instead:%lf%");
@@ -83,6 +91,6 @@ if (file_exists("config.ini")) {
 // Load the intro screen
 //Ansifile::play("intro.ans");
 $parser->parse("%f8%> Initializing user...%lf%");
-$user = User::getUser((int)$args["userid"]);
+//$user = User::getUser((int)$args["userid"]);
 usleep(500000);
 require "screens/intro.php";

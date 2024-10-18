@@ -9,11 +9,11 @@ use Nahkampf\Deadlock\DropfileType;
 
 class Dropfile
 {
-    public const string ERR_FILENOTEXIST = "Can't find dropfile";
-    public const string ERR_NODATA = "Dropfile empty or not readable";
-    public const string ERR_UNSUPPORTEDFORMAT = "Unknown or unsuppoted dropfile format";
-    public const string ERR_PARSING = "Parsing error, check your dropfile format";
-    public const string ERR_USERID = "Could not determine user ID, something wrong with dropfile?";
+    public const ERR_FILENOTEXIST = "Can't find dropfile";
+    public const ERR_NODATA = "Dropfile empty or not readable";
+    public const ERR_UNSUPPORTEDFORMAT = "Unknown or unsuppoted dropfile format";
+    public const ERR_PARSING = "Parsing error, check your dropfile format";
+    public const ERR_USERID = "Could not determine user ID, something wrong with dropfile?";
 
     public DropfileType $dropfileType;
     public array $doorFileData;
@@ -55,7 +55,7 @@ class Dropfile
 
     private function parse(string $data, DropfileType $type = DropfileType::DOOR32SYS): array
     {
-        $dataArray = @explode("\r\n", $data);
+        $dataArray = @explode("\n", $data);
         $this->doorFileData = $dataArray;
         switch ($type) {
             case DropfileType::DOOR32SYS:
