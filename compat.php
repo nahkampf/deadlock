@@ -10,6 +10,17 @@ echo chr(219) . chr(178) . chr(177) . chr(176) . "\n\n";
 echo "The line below should be the text DEADLOCK in bright white on a grey background. If it is something else then you probably have an ANSI problem:\n";
 echo "\e[1;37m\e[0;47mDEADLOCK\e[0m\n\n";
 
+// Are we on at least php 7.1?
+if (!function_exists('phpversion')) {
+    echo "[!] Your PHP is too old (requires at least php 7.1\n";
+}
+if (function_exists('phpversion')) {
+    $ver = explode(".", phpversion());
+    if ($ver[0] + $ver[1] < 8) { // 7.1 = 8, 8.0 = 8 etc
+        echo "[!] Your PHP is too old (requires at least php 7.1\n";
+    }
+}
+
 // Do we have the required readline stuff?
 if (!extension_loaded('readline')) {
     echo "[!] Your PHP doesn't have the readline extension.\n";
