@@ -15,9 +15,18 @@
         }
     ],
     "require": {
-        "nahkampf/ansi-php": "^3.2"
+        "nahkampf/ansi-php": "^3.2",
+        "php": "^7.1"
     },
     "require-dev": {
         "rector/rector": "^1.2"
+    },
+    "scripts": {
+        "rector-src": "vendor/bin/rector process src --dry-run || true",
+        "rector-screens": "vendor/bin/rector process screens --dry-run",
+        "rector": [
+            "@rector-src",
+            "@rector-screens"
+        ]
     }
 }
