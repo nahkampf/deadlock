@@ -16,5 +16,8 @@
     ],
     "require": {
         "nahkampf/ansi-php": "^3.2"
+    },
+    "require-dev": {
+        "rector/rector": "^1.2"
     }
 }
