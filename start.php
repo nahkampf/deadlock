@@ -93,4 +93,5 @@ if (file_exists("config.ini")) {
 $parser->parse("%f8%> Initializing user...%lf%");
 //$user = User::getUser((int)$args["userid"]);
 usleep(500000);
+$showsplash = true;
 require "screens/intro.php";
