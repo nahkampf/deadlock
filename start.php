@@ -24,7 +24,7 @@ for ($f = 0; $f < 10; $f++) {
     Ansifile::play('ad_1.ans');
     usleep(50000);
     Ansifile::play('ad_2.ans');
-    usleep(50000);    
+    usleep(50000);
 }
 Effects::deadScreen();
 $args = getopt(

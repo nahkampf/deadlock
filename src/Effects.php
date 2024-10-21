@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Nahkampf\Deadlock;
 
-use \Bramus\Ansi\Ansi as Ansi;
-use \Bramus\Ansi\Writers\StreamWriter as StreamWriter;
-use \Bramus\Ansi\Parser as Parser;
+use Bramus\Ansi\Ansi as Ansi;
+use Bramus\Ansi\Writers\StreamWriter as StreamWriter;
+use Bramus\Ansi\Parser as Parser;
 
 class Effects
 {
@@ -63,7 +63,8 @@ class Effects
         }
     }
 
-    public static function whiteFlash() {
+    public static function whiteFlash()
+    {
         // dark grey
         self::expandFill(chr(176), 8, 0, 2000);
         self::expandFill(chr(177), 8, 0, 2000);
