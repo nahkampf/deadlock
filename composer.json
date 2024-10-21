@@ -15,8 +15,8 @@
         }
     ],
     "require": {
-        "nahkampf/ansi-php": "^3.2",
-        "php": "^7.1"
+        "nahkampf/ansi-php": "^3",
+        "php": ">=7.1"
     },
     "require-dev": {
         "rector/rector": "^1.2"
