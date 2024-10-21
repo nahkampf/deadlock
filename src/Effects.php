@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 namespace Nahkampf\Deadlock;
+
 use \Bramus\Ansi\Ansi as Ansi;
 use \Bramus\Ansi\Writers\StreamWriter as StreamWriter;
 use \Bramus\Ansi\Parser as Parser;
 
 class Effects
 {
-
     /**
      * Assumes 80x25 (but can easily be modified for dynamic screen size)
      */
-     public static function deadScreen()
+    public static function deadScreen()
     {
         $ansi = new Ansi(new StreamWriter('php://stdout'));
         $parser = new Parser($ansi, Parser::MODE_ANSIBBS);
@@ -22,23 +22,22 @@ class Effects
         $x = 0;
         start:
         $parser->parse("%c%");
-        for($row = 1; $row < 26; $row++) {
-            for($column = 1; $column < 80; $column++) {
+        for ($row = 1; $row < 26; $row++) {
+            for ($column = 1; $column < 80; $column++) {
                 // make a random noise here
                 // either █, ▀ or ▄ in white or black
-                $color = rand(0,1);
+                $color = random_int(0, 1);
                 $glyphs = [0 => chr(219), 1 => chr(220), 2 => chr(223)];
-                $glyph = $glyphs[rand(0,2)];
+                $glyph = $glyphs[random_int(0, 2)];
                 if ($color == 0) {
                     $parser->parse(" ");
                     continue;
                 } else {
-                    $parser->parse(
-                        $glyph);
+                    $parser->parse($glyph);
                 }
             }
         }
-        if ($x < 10) {
+        while ($x < 10) {
             usleep(50000);
             $x++;
             goto start;

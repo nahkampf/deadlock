@@ -43,12 +43,10 @@ class Dropfile
     {
         if (!file_exists($filepath)) {
             throw new \Error(self::ERR_FILENOTEXIST . " ({$filepath})");
-            exit;
         }
         $data = @file_get_contents($filepath);
         if (!$data) {
             throw new \Error(self::ERR_NODATA);
-            exit;
         }
         return $data;
     }
@@ -61,11 +59,11 @@ class Dropfile
             case DropfileType::DOOR32SYS:
                 if (count($dataArray) < 11) {
                     throw new \Error(self::ERR_PARSING);
-                    exit;
                 }
                 $dropInfo["userId"] = @(int)$dataArray[4];
                 $dropInfo["handle"] = @$dataArray[6];
                 $dropInfo["minutesLeft"] = @$dataArray[8];
+                /** @noRector \Rector\DeadCode\Rector\Cast\RecastingRemovalRector */
                 if ((int)$dropInfo["userId"] == 0) {
                     throw new \Error(self::ERR_USERID);
                 }
@@ -73,11 +71,9 @@ class Dropfile
                     Utils::hangup("No time left today!");
                 }
                 return $dropInfo;
-                break;
             case DropfileType::DOORSYS:
                 if (count($dataArray) < 31) {
                     throw new \Error(self::ERR_PARSING);
-                    exit;
                 }
                 $dropInfo["userId"] = @(int)$dataArray[26];
                 $dropInfo["handle"] = @$dataArray[36];
@@ -89,11 +85,8 @@ class Dropfile
                     Utils::hangup("No time left today!");
                 }
                 return $dropInfo;
-                break;
             default:
                 throw new \Error(self::ERR_UNSUPPORTEDFORMAT);
-                exit;
-                break;
         }
     }
 }

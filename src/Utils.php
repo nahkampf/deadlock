@@ -36,21 +36,21 @@ class Utils
                 $parser->parse($str);
                 break;
             case "both":
-                if ($toowide) {
+                if ($toowide !== 0) {
                     return false;
                 }
                 echo "\e[12;" . floor(40 - ($strlen / 2)) . "H;";
                 $parser->parse($str);
-                //$parser->parse("%xy3," . floor(40 - ($strlen / 2)) . "%" . $str);
                 break;
             case "horizontal":
             default:
-                if ($toowide) {
+                if ($toowide !== 0) {
                     return false;
                 }
                 echo "\e[" . floor(40 - ($strlen / 2)) . "G"; // this might not be ANSI.SYS compatible
                 $parser->parse($str);
                 break;
         }
+        return null;
     }
 }

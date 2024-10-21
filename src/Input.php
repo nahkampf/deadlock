@@ -67,7 +67,6 @@ class Input
                 return "f10";
             default:
                 return $input;
-                break;
         }
     }
 }

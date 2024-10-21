@@ -19,8 +19,8 @@ $showsplash = false;
 $parser->parse("%r%%c%");
 $input = new Input();
 Ansifile::play("menu_1.ans");
-$x=1;
-while(true) {
+$x = 1;
+while (true) {
     switch ($input->key()) {
         case "up":
             $x--;
@@ -39,15 +39,15 @@ while(true) {
             Ansifile::play("menu_{$x}.ans");
             break;
         case "enter":
-            switch($x) {
+            switch ($x) {
                 case 1: // ENTER GAME
-                    require "mainmenu.php";
+                    require __DIR__ . "/mainmenu.php";
                     break;
                 case 2: // NEW GAME
-                    require "newgame.php";
+                    require __DIR__ . "/newgame.php";
                     break;
                 case 3: // HELP
-                    require "help.php";
+                    require __DIR__ . "/help.php";
                     break;
                 case 4: // EXIT
                 default:
