@@ -10,6 +10,8 @@ __deadlock__ is a multiplayer cyberpunk door game (meant to be run on BBSes).
 - Composer
 - A linux or unix environment (since the Windows implementation of `readline` doesn't support reading keypresses).
 
+To make sure everything works allright please set up a door running `php compat.php`, if that gives you no errors then you should be good to go.
+
 ## Install
 Download a release and put it where your other doors are (e.g `/sbbs/xtrn/deadlock` for SynchroNet), then run:
 
