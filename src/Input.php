@@ -143,4 +143,33 @@ class Input
             }
         }
     }
+    public function anykey($reason = null, $wait = 0) {
+        if ($wait != 0) {
+            sleep((int)$wait);
+        }
+        $ansi = new Ansi(new StreamWriter('php://stdout'));
+        $parser = new Parser($ansi, Parser::MODE_ANSIBBS);
+        if (!$reason) {
+            $parser->parse("%f3%[%f7%Press any key to continue%f3%]");
+        } else {
+            $parser->parse($reason);
+        }
+        while(true) {
+            $key = $this->key();
+            if ($key) return;
+        }
+    }
+    // @todo: broken?
+    public function pause($seconds, $allowContinue = false)
+    {
+        $start = microtime(true);
+        while(microtime(true) - $start < $seconds) {
+            if ($allowContinue) {
+                if($this->key()) {
+                    break;
+                }
+            }
+        }
+        echo "broke out";
+    }
 }
