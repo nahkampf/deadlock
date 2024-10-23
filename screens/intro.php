@@ -8,16 +8,16 @@ use Nahkampf\Deadlock\Input;
 
 start:
 $parser->parse("%r%%c%");
+$input = new Input();
 if ($showsplash) {
     Ansifile::play("intro.ans");
     $str = "%f14%dead%f15%lock %f7%version %f15%" . VERSION . "%f7% by %f14%tz %f8%<%f15%kreuzweg@gmail.com%f8%>%lf%";
-    Utils::center($parser, $str, "horizontal");
-    $parser->parse("%lf%");
-    sleep(2);
+    $parser->parse("%xy16,20%{$str}");
+    $parser->parse("%xy24,1%");
+    $input->pause(5, true);
 }
 $showsplash = false;
 $parser->parse("%r%%c%");
-$input = new Input();
 Ansifile::play("menu_1.ans");
 $x = 1;
 while (true) {

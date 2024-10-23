@@ -19,7 +19,7 @@ newgame:
 $parser->parse("%c%%r%");
 Ansifile::play("newchar.ans");
 $input = new Input();
-$input->anykey();
+$input->pause(2,true);
 $parser->parse("%c%");
 // archetype selector
 $archetypes = [
