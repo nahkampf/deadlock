@@ -163,13 +163,12 @@ class Input
     public function pause($seconds, $allowContinue = false)
     {
         $start = microtime(true);
-        while(microtime(true) - $start < $seconds) {
-            if ($allowContinue) {
-                if($this->key()) {
-                    break;
-                }
+        while(true) {
+            if (microtime(true) - $start > $seconds) {
+                return;
             }
+            usleep(100000);
         }
-        echo "broke out";
+        return;
     }
 }
