@@ -1,0 +1,1 @@
+- Add a "quote of the day"/random quote on start/exit?
